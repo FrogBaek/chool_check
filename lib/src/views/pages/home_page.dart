@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
 
     bool canCheck = distance < 100;
 
+    // 비동기 과정에서 context가 사라지는 현상을 대비하는 기능 추가
     if (!context.mounted) return;
 
     _canCheckDialog(context, canCheck);
@@ -91,9 +92,6 @@ class _HomePageState extends State<HomePage> {
         ),
         const SizedBox(height: 20.0),
         ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: CustomColor.fullGreen,
-          ),
           onPressed: () async {
             await widget.mapProvider.checkLocationPermission()
                 ? _choolCheck(context)
