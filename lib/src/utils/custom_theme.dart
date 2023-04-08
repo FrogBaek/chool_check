@@ -16,7 +16,7 @@ class CustomTheme {
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
           color: CustomColor.fullGreen,
-          fontSize: 25,
+          fontSize: 22,
         ),
         bodyMedium: TextStyle(
           color: CustomColor.fullGreen,
@@ -32,5 +32,8 @@ class CustomTheme {
               backgroundColor: CustomColor.fullGreen,
               textStyle: const TextStyle(
                 color: Colors.white,
-              ))));
+              ))),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Colors.white,
+      ));
 }

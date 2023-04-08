@@ -9,19 +9,37 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  NaverMapController? _mapController;
+
 // 출석체크 로직
-  void choolCheck(BuildContext context) async {
+  void _choolCheck(BuildContext context) async {
     final distance = await widget.mapProvider.getDistance();
 
     bool canCheck = distance < 100;
 
     if (!context.mounted) return;
 
-    canCheckDialog(context, canCheck);
+    _canCheckDialog(context, canCheck);
+  }
+
+  // 현위치 로직
+  void _currentLocation() async {
+    try {
+      final currentLatLng = await widget.mapProvider.getCurrentLocation();
+
+      await _mapController!.moveCamera(CameraUpdate.toCameraPosition(
+        CameraPosition(
+          target: currentLatLng,
+          zoom: 16,
+        ),
+      ));
+    } catch (e) {
+      print(e);
+    }
   }
 
   // 출첵 Dialog 위젯
-  Future<void> canCheckDialog(BuildContext context, bool canCheck) {
+  Future<void> _canCheckDialog(BuildContext context, bool canCheck) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -41,8 +59,28 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+  // 현위치 버튼 위젯
+  Widget _currentButton() {
+    return FloatingActionButton(
+      onPressed: () async {
+        await widget.mapProvider.checkLocationPermission()
+            ? _currentLocation()
+            : _showPermissonDialog(
+                context, '현재 위치 기능을 사용하려면 위치 권한이 필요합니다. 설정에서 해당 권한을 허용해주세요!');
+      },
+      child: const Padding(
+        padding: EdgeInsets.all(6),
+        child: Icon(
+          Icons.my_location,
+          size: 25,
+          color: CustomColor.fullGreen,
+        ),
+      ),
+    );
+  }
+
   // Footer 위젯
-  Widget footer() {
+  Widget _footer() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -58,8 +96,9 @@ class _HomePageState extends State<HomePage> {
           ),
           onPressed: () async {
             await widget.mapProvider.checkLocationPermission()
-                ? choolCheck(context)
-                : showPermissonDialog(context);
+                ? _choolCheck(context)
+                : _showPermissonDialog(context,
+                    '현재 내 위치와 가까운 회사를 찾기 위해 위치 권한이 필요합니다. 설정에서 해당 권한을 허용해주세요!');
           },
           child: const Text('출근하기!'),
         )
@@ -68,13 +107,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Permission Dialog 위젯
-  Future<void> showPermissonDialog(BuildContext context) {
+  Future<void> _showPermissonDialog(BuildContext context, String message) {
     return showDialog(
         context: context,
         builder: (context) {
           return CustomDialog(
             title: '위치 권한 거절',
-            message: '현재 내 위치와 가까운 회사를 찾기 위해 위치 권한이 필요합니다. 설정에서 해당 권한을 허용해주세요!',
+            message: message,
             positiveButtonTitle: '설정',
             negativeButtonTitle: '취소',
             positiveButtonPressed: () async {
@@ -119,18 +158,30 @@ class _HomePageState extends State<HomePage> {
             children: [
               Expanded(
                 flex: 3,
-                child: NaverMap(
-                  locationButtonEnable: true,
-                  initialCameraPosition: CameraPosition(
-                    target: widget.mapProvider.initLocation,
-                    zoom: 16,
-                  ),
-                  markers: widget.mapProvider.myMarkers,
-                  circles: widget.mapProvider.myCircles,
+                child: Stack(
+                  children: [
+                    NaverMap(
+                      // onMapCreated를 사용해야 현위치 기능 사용 가능
+                      onMapCreated: (NaverMapController mapController) {
+                        _mapController = mapController;
+                      },
+                      initialCameraPosition: CameraPosition(
+                        target: widget.mapProvider.initLocation,
+                        zoom: 16,
+                      ),
+                      markers: widget.mapProvider.myMarkers,
+                      circles: widget.mapProvider.myCircles,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(20),
+                      alignment: const Alignment(1.0, 1.0),
+                      child: _currentButton(),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
-                child: footer(),
+                child: _footer(),
               )
             ],
           );
