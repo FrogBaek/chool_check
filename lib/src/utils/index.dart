@@ -11,29 +11,30 @@ export 'package:provider/provider.dart';
 export 'package:permission_handler/permission_handler.dart';
 
 /* Views */
-export 'package:chool_check/views/pages/home_page.dart';
-export 'package:chool_check/views/app.dart';
+export 'package:chool_check/src/views/pages/home_page.dart';
+export 'package:chool_check/src/views/app.dart';
 
 /* Models */
-export 'package:chool_check/models/company_model.dart';
-export 'package:chool_check/models/location_model.dart';
-export 'package:chool_check/models/scheme/location.dart';
+export 'package:chool_check/src/models/company_model.dart';
+export 'package:chool_check/src/models/location_model.dart';
+export 'package:chool_check/src/models/scheme/location.dart';
 export 'package:chool_check/dummy.dart';
 
 /* Repository */
-export 'package:chool_check/repository/company_repository.dart';
+export 'package:chool_check/src/repository/company_repository.dart';
 
 /* Controllers */
-export 'package:chool_check/providers/map_provider.dart';
+export 'package:chool_check/src/providers/map_provider.dart';
 
 /* Components */
-export 'package:chool_check/views/components/custom_appbar.dart';
-export 'package:chool_check/views/components/custom_marker.dart';
-export 'package:chool_check/views/components/custom_circle.dart';
-export 'package:chool_check/views/components/custom_dialog.dart';
+export 'package:chool_check/src/views/components/custom_appbar.dart';
+export 'package:chool_check/src/views/components/custom_marker.dart';
+export 'package:chool_check/src/views/components/custom_circle.dart';
+export 'package:chool_check/src/views/components/custom_dialog.dart';
 
 /* Services */
-export 'package:chool_check/service/location_service.dart';
+export 'package:chool_check/src/service/location_service.dart';
 
 /* utils */
-export 'package:chool_check/utils/custom_color.dart';
+export 'package:chool_check/src/utils/custom_color.dart';
+export 'package:chool_check/src/utils/custom_theme.dart';

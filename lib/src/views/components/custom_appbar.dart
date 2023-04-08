@@ -1,4 +1,4 @@
-import 'package:chool_check/utils/index.dart';
+import 'package:chool_check/src/utils/index.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -15,10 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(
         title,
-        style: const TextStyle(
-          color: Colors.blue,
-          fontWeight: FontWeight.w700,
-        ),
+        style: Theme.of(context).textTheme.bodyLarge
       ),
       backgroundColor: Colors.white,
     );

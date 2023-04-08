@@ -1,4 +1,4 @@
-import 'package:chool_check/utils/index.dart';
+import 'package:chool_check/src/utils/index.dart';
 
 class CustomCircle extends CircleOverlay {
   // color, outlineColor, outlineWidth까지 지정해줘야 정상 작동

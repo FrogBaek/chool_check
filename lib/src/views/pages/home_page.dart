@@ -1,4 +1,4 @@
-import 'package:chool_check/utils/index.dart';
+import 'package:chool_check/src/utils/index.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.mapProvider}) : super(key: key);
@@ -9,69 +9,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+// 출석체크 로직
+  void choolCheck(BuildContext context) async {
+    final distance = await widget.mapProvider.getDistance();
 
-
-  Future<void> anything(BuildContext context) async {
-    final curPosition = await Geolocator.getCurrentPosition();
-
-    final distance = Geolocator.distanceBetween(
-      curPosition.latitude,
-      curPosition.longitude,
-      widget.mapProvider.initLocation.latitude,
-      widget.mapProvider.initLocation.longitude,
-    );
+    bool canCheck = distance < 100;
 
     if (!context.mounted) return;
 
-    bool canCheck = distance < 100;
     canCheckDialog(context, canCheck);
   }
 
-  // Footer
-  Widget footer() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(
-          Icons.timelapse_outlined,
-          color: Colors.blue,
-          size: 50.0,
-        ),
-        const SizedBox(height: 20.0),
-        ElevatedButton(
-          onPressed: () async {
-            await LocationService().checkLocationPermission()
-                ? anything(context)
-                : showPermissonDialog(context);
-          },
-          child: const Text('출근하기!'),
-        )
-      ],
-    );
-  }
-
-  // Dialog
-  Future<void> showPermissonDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return CustomDialog(
-            title: '위치 권한 거절',
-            message: '현재 내 위치와 가까운 회사를 찾기 위해 위치 권한이 필요합니다. 설정에서 해당 권한을 허용해주세요!',
-            positiveButtonTitle: '설정',
-            negativeButtonTitle: '취소',
-            positiveButtonPressed: () async {
-              openAppSettings();
-            },
-            negativeButtonPressed: () {
-              Navigator.of(context).pop();
-            },
-            usePositiveButton: true,
-          );
-        });
-  }
-
-
+  // 출첵 Dialog 위젯
   Future<void> canCheckDialog(BuildContext context, bool canCheck) {
     return showDialog(
         context: context,
@@ -92,12 +41,59 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+  // Footer 위젯
+  Widget footer() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Icon(
+          Icons.timelapse_outlined,
+          color: CustomColor.fullGreen,
+          size: 50.0,
+        ),
+        const SizedBox(height: 20.0),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: CustomColor.fullGreen,
+          ),
+          onPressed: () async {
+            await widget.mapProvider.checkLocationPermission()
+                ? choolCheck(context)
+                : showPermissonDialog(context);
+          },
+          child: const Text('출근하기!'),
+        )
+      ],
+    );
+  }
+
+  // Permission Dialog 위젯
+  Future<void> showPermissonDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return CustomDialog(
+            title: '위치 권한 거절',
+            message: '현재 내 위치와 가까운 회사를 찾기 위해 위치 권한이 필요합니다. 설정에서 해당 권한을 허용해주세요!',
+            positiveButtonTitle: '설정',
+            negativeButtonTitle: '취소',
+            positiveButtonPressed: () async {
+              openAppSettings();
+            },
+            negativeButtonPressed: () {
+              Navigator.of(context).pop();
+            },
+            usePositiveButton: true,
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: '오늘도 출첵'),
       body: FutureBuilder<bool>(
-        future: LocationService().checkLocationPermission(),
+        future: widget.mapProvider.checkLocationPermission(),
         builder: (context, snapshot) {
           // 로딩 상태
           if (!snapshot.hasData &&
@@ -118,7 +114,7 @@ class _HomePageState extends State<HomePage> {
             );
           }
 
-          // 권한 허용 상태 || 권한 없는 상태
+          // 권한 허용 상태 or 권한 없는 상태
           return Column(
             children: [
               Expanded(

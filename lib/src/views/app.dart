@@ -1,4 +1,4 @@
-import 'package:chool_check/utils/index.dart';
+import 'package:chool_check/src/utils/index.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);

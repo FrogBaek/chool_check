@@ -1,4 +1,4 @@
-import 'package:chool_check/utils/index.dart';
+import 'package:chool_check/src/utils/index.dart';
 
 // LocationModel 생성
 class LocationModel extends LatLng {

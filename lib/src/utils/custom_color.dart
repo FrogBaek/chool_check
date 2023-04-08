@@ -1,4 +1,4 @@
-import 'package:chool_check/utils/index.dart';
+import 'package:chool_check/src/utils/index.dart';
 
 class CustomColor {
   static const Color fullGreen = Color.fromRGBO(45, 180, 0, 1);

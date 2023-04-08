@@ -1,4 +1,4 @@
-import 'package:chool_check/utils/index.dart';
+import 'package:chool_check/src/utils/index.dart';
 
 class CustomDialog extends Dialog {
   final String title;
@@ -23,17 +23,29 @@ class CustomDialog extends Dialog {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(title),
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
       content: Text(message),
       actions: <Widget>[
         TextButton(
           onPressed: negativeButtonPressed,
-          child: Text(negativeButtonTitle),
+          child: Text(
+            negativeButtonTitle,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
         ),
         usePositiveButton
             ? TextButton(
                 onPressed: positiveButtonPressed,
-                child: Text(positiveButtonTitle),
+                child: Text(
+                  positiveButtonTitle,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(color: CustomColor.fullGreen),
+                ),
               )
             : const SizedBox(),
       ],
