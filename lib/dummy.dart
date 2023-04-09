@@ -14,14 +14,14 @@ class Dummy {
       'latLng': const LatLng(37.500012, 127.0364185),
       'overlayId': "choolCheckCircle2",
       'center': const LatLng(37.500012, 127.0364185),
-      'radius': 1000.0,
+      'radius': 100.0,
     },
     {
       'locationName': 'Apple',
       'latLng': const LatLng(37.5130194, 127.0597816),
       'overlayId': "choolCheckCircle3",
       'center': const LatLng(37.5130194, 127.0597816),
-      'radius': 1000.0,
+      'radius': 100.0,
     },
     {
       'locationName': 'Microsoft',
