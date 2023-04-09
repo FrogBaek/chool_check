@@ -28,7 +28,7 @@ class Dummy {
       'latLng': const LatLng(37.5746932, 126.9789672),
       'overlayId': "choolCheckCircle4",
       'center': const LatLng(37.5746932, 126.9789672),
-      'radius': 1000,
+      'radius': 100.0,
     },
   ];
 
