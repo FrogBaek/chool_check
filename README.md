@@ -1,6 +1,6 @@
 # 오늘도 출첵
 
-<img width = "35%" src="https://user-images.githubusercontent.com/95288868/230781220-9c9f6b59-8133-471a-9d6c-2907a7cbbeef.png" alt="Screenshot_1681053426"/>
+<img width = "25%" src="https://user-images.githubusercontent.com/95288868/230781220-9c9f6b59-8133-471a-9d6c-2907a7cbbeef.png" alt="Screenshot_1681053426"/>
 
  근무하는 회사를 기준으로 100m 이내에 위치하는 직원이 자체적으로 출근을 인증하는 서비스입니다.
 
