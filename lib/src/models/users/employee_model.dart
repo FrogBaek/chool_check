@@ -8,7 +8,8 @@ class EmployeeModel implements User {
   final String companyName;
 
   @override
-  final DateTime? checkedTime;
+  String? checkedTime;
+  // 출근 시간은 가변적이므로 final 선언 X!
 
   EmployeeModel({
     required this.userName,
@@ -21,16 +22,8 @@ class EmployeeModel implements User {
     return EmployeeModel(
       userName: json['userName'] ?? '',
       companyName: json['companyName'] ?? '',
-      checkedTime: json['checkedTime'] ?? DateTime(0),
+      checkedTime: json['checkedTime'] ?? '',
     );
   }
-//
-// // Json으로 변환
-// Map<String, dynamic> toJson() {
-//   return {
-//     'userName': userName,
-//     'companyName': companyName,
-//     'checkedTime': checkedTime,
-//   };
-// }
+
 }

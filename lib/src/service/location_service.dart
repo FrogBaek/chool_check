@@ -2,8 +2,8 @@ import 'package:chool_check/src/utils/index.dart';
 
 // Location 서비스 모음
 class LocationService {
-  static const LocationModel initLocation =
-      LocationModel(latitude: 37.3591784, longitude: 127.1048319);
+  static const LatLngModel initLocation =
+  LatLngModel(latitude: 37.3591784, longitude: 127.1048319);
 
   // 위치 권한 요청 Function
   Future<bool> checkLocationPermission() async {
@@ -20,9 +20,9 @@ class LocationService {
   }
 
   // 현재 위치 가져오는 Function
-  Future<LocationModel> getCurrentLocation() async {
+  Future<LatLngModel> getCurrentLocation() async {
     final Position _position = await Geolocator.getCurrentPosition();
-    return LocationModel(
+    return LatLngModel(
       latitude: _position.latitude,
       longitude: _position.longitude,
     );

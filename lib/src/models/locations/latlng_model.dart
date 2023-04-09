@@ -1,11 +1,11 @@
 import 'package:chool_check/src/utils/index.dart';
 
 // LocationModel 생성
-class LocationModel extends LatLng {
+class LatLngModel extends LatLng {
   final double latitude;
   final double longitude;
 
-  const LocationModel({
+  const LatLngModel({
     required this.latitude,
     required this.longitude,
   }) : super(latitude, longitude);

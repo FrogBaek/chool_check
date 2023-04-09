@@ -1,8 +1,9 @@
 import 'package:chool_check/src/utils/index.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.mapProvider}) : super(key: key);
+  const HomePage({Key? key, required this.mapProvider, required this.userProvider}) : super(key: key);
   final MapProvider mapProvider;
+  final UserProvider userProvider;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -14,8 +15,9 @@ class _HomePageState extends State<HomePage> {
 // 출석체크 로직
   void _choolCheck(BuildContext context) async {
     final distance = await widget.mapProvider.getDistance();
+    final myCompanyName = widget.userProvider.myProfile.companyName;
 
-    bool canCheck = distance < 100;
+    bool canCheck = distance < 100 && widget.mapProvider.findCompanyName(myCompanyName);
 
     // 비동기 과정에서 context가 사라지는 현상을 대비하는 기능 추가
     if (!context.mounted) return;
@@ -50,7 +52,9 @@ class _HomePageState extends State<HomePage> {
             positiveButtonTitle: '출근하기',
             negativeButtonTitle: canCheck ? '취소' : '확인',
             positiveButtonPressed: () {
-              Navigator.of(context).pop(true);
+              Navigator.of(context).pop();
+              widget.userProvider.updateCheckedTime();
+              _checkSucceeded(context);
             },
             negativeButtonPressed: () {
               Navigator.of(context).pop(false);
@@ -58,6 +62,27 @@ class _HomePageState extends State<HomePage> {
             usePositiveButton: canCheck,
           );
         });
+  }
+
+  Future<void> _checkSucceeded(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Consumer<UserProvider>(builder: (context, provider, child) {
+          return CustomDialog(
+            title: '오늘도 힘내봐요!',
+            message: '출근 시간: ${provider.myProfile.checkedTime}',
+            positiveButtonTitle: '',
+            negativeButtonTitle: '네...',
+            positiveButtonPressed: () {},
+            negativeButtonPressed: () {
+              Navigator.of(context).pop();
+            },
+            usePositiveButton: false,
+          );
+        });
+      },
+    );
   }
 
   // 현위치 버튼 위젯
@@ -128,7 +153,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: '오늘도 출첵'),
+      appBar: CustomAppBar(title: '오늘도 출첵', actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const MyPage()));
+          },
+          icon: const Icon(Icons.settings_outlined),
+        ),
+      ]),
       body: FutureBuilder<bool>(
         future: widget.mapProvider.checkLocationPermission(),
         builder: (context, snapshot) {

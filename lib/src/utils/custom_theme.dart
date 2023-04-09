@@ -12,6 +12,9 @@ class CustomTheme {
         color: Colors.white,
         elevation: 0,
         centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        )
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(

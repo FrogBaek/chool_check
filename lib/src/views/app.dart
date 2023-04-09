@@ -6,7 +6,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MapProvider _mapProvider = Provider.of<MapProvider>(context);
+    final UserProvider _userProvider = Provider.of<UserProvider>(context);
 
-    return HomePage(mapProvider: _mapProvider);
+    return HomePage(
+      mapProvider: _mapProvider,
+      userProvider: _userProvider,
+    );
   }
 }

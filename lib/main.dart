@@ -9,7 +9,9 @@ class ChoolCheck extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<MapProvider>(create: (_) => MapProvider())],
+        ChangeNotifierProvider<MapProvider>(create: (_) => MapProvider()),
+        ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
+      ],
       child: MaterialApp(
         themeMode: CustomTheme.lightThemeMode,
         theme: CustomTheme.themeData,
