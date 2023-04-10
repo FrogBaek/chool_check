@@ -1,7 +1,9 @@
 import 'package:chool_check/src/utils/index.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.mapProvider, required this.userProvider}) : super(key: key);
+  const HomePage(
+      {Key? key, required this.mapProvider, required this.userProvider})
+      : super(key: key);
   final MapProvider mapProvider;
   final UserProvider userProvider;
 
@@ -12,12 +14,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   NaverMapController? _mapController;
 
-// 출석체크 로직
+  /*로직*/
+
+  // 출석체크 로직
   void _choolCheck(BuildContext context) async {
     final distance = await widget.mapProvider.getDistance();
-    final myCompanyName = widget.userProvider.myProfile.companyName;
 
-    bool canCheck = distance < 100 && widget.mapProvider.findCompanyName(myCompanyName);
+    bool canCheck = distance < 100 && widget.userProvider.found;
 
     // 비동기 과정에서 context가 사라지는 현상을 대비하는 기능 추가
     if (!context.mounted) return;
@@ -40,6 +43,10 @@ class _HomePageState extends State<HomePage> {
       print(e);
     }
   }
+
+
+
+  /*위젯*/
 
   // 출첵 Dialog 위젯
   Future<void> _canCheckDialog(BuildContext context, bool canCheck) {
@@ -64,6 +71,7 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+  // 출첵 완료 Dialog 위젯
   Future<void> _checkSucceeded(BuildContext context) {
     return showDialog(
       context: context,

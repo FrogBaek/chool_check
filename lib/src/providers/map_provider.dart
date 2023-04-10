@@ -21,26 +21,6 @@ class MapProvider extends ChangeNotifier {
     }
   }
 
-  bool findCompanyName (String myCompanyName) {
-    bool isValueInList(List list, dynamic value) {
-      for (dynamic element in list) {
-        if (element == value) {
-          return true;
-        }
-      }
-      return false;
-    }
-
-    List<String> names = CompanyModel.myCompanyNames();
-
-    if (isValueInList(names, myCompanyName)) {
-      return true;
-    } else {
-      return false;
-    }
-
-  }
-
   Future<bool> checkLocationPermission() async =>
       _locationService.checkLocationPermission();
 
