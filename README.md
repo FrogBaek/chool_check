@@ -45,7 +45,7 @@
 
 ## 화면 설명
 
-<img width = "30%" src="https://user-images.githubusercontent.com/95288868/230781220-9c9f6b59-8133-471a-9d6c-2907a7cbbeef.png" alt="Screenshot_1681053426" align ="left"/>|<img width = "30%" src="https://user-images.githubusercontent.com/95288868/230781220-9c9f6b59-8133-471a-9d6c-2907a7cbbeef.png" alt="Screenshot_1681053426" align= "right"/>
+<img width = "30%" src="https://user-images.githubusercontent.com/95288868/230781220-9c9f6b59-8133-471a-9d6c-2907a7cbbeef.png" alt="Screenshot_1681053426" align ="left"/>
 
 '홈' 화면입니다. 사용자는 여기서 NaverMap을 통해 출근을 인증하거나 우측 상단의 버튼을 통해 '마이페이지' 화면으로 이동할 수 있습니다.<br/><br/>
 - 우측 하단에 위치한 버튼을 통해 현재 위치로 돌아갈 수 있습니다.<br/><br/>
@@ -54,7 +54,7 @@
 - 성공적으로 출첵을 하게되면 출근 완료 메시지와 함께 출근한 시간을 볼 수 있습니다.<br/><br/><br/>
 
 
-
+<img width = "30%" src="https://user-images.githubusercontent.com/95288868/230781220-9c9f6b59-8133-471a-9d6c-2907a7cbbeef.png" alt="Screenshot_1681053426" align= "left"/>
 
 '마이페이지' 화면입니다. 사용자는 여기서 자신이 근무하는 회사와 닉네임을 볼 수 있습니다.
 
