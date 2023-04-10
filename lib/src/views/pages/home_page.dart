@@ -64,6 +64,7 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+  // 출첵 완료 Dialog 위젯
   Future<void> _checkSucceeded(BuildContext context) {
     return showDialog(
       context: context,
