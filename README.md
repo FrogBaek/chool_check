@@ -3,15 +3,6 @@
 <img width = "35%" src="https://user-images.githubusercontent.com/95288868/230781220-9c9f6b59-8133-471a-9d6c-2907a7cbbeef.png" alt="Screenshot_1681053426"/>
 
  근무하는 회사를 기준으로 100m 이내에 위치하는 직원이 자체적으로 출근을 인증하는 서비스입니다.
- <br/>
- ```
- 사용 패키지: 
-   naver_map_plugin       # 목적: '오늘도 출첵'의 주요 서비스인 지도를 구현하기 위함
-   geolocator             # 목적: 현재 위치와 관련된 함수를 작성하기 위함
-   provider               # 목적: controller로써 상태관리를 하기 위함
-   permission_handler     # 목적: 사용자의 권한을 보다 쉽게 얻기 위함 (geolocator 와 겹치는 부분은 hide)
-   intl                   # 목적: DateTime을 Formatting 하기 위함
-```
 
 <br/><br/><br/>
 
@@ -35,6 +26,20 @@
      
      ...
 ```
+
+<br/>
+
+
+ ```
+ 사용된 패키지: 
+   naver_map_plugin       # 목적: '오늘도 출첵'의 주요 서비스인 지도를 구현하기 위함
+   geolocator             # 목적: 현재 위치와 관련된 함수를 작성하기 위함
+   provider               # 목적: controller로써 상태관리를 하기 위함
+   permission_handler     # 목적: 사용자의 권한을 보다 쉽게 얻기 위함 (geolocator 와 겹치는 부분은 hide)
+   intl                   # 목적: DateTime을 Formatting 하기 위함
+```
+
+
 
 <br/><br/><br/>
 
