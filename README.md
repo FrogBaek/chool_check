@@ -45,8 +45,9 @@
 
 ## 화면 설명
 
-<img width = "30%" src="https://user-images.githubusercontent.com/95288868/230781220-9c9f6b59-8133-471a-9d6c-2907a7cbbeef.png" alt="Screenshot_1681053426"/>
+<img width = "30%" src="https://user-images.githubusercontent.com/95288868/230781220-9c9f6b59-8133-471a-9d6c-2907a7cbbeef.png" alt="Screenshot_1681053426" align "left"/>
 
+<img width = "30%" src="https://user-images.githubusercontent.com/95288868/230781220-9c9f6b59-8133-471a-9d6c-2907a7cbbeef.png" alt="Screenshot_1681053426" align "right"/>
 '홈' 화면입니다. 사용자는 여기서 NaverMap을 통해 출근을 인증하거나 우측 상단의 버튼을 통해 '마이페이지' 화면으로 이동할 수 있습니다.<br/><br/>
 - 우측 하단에 위치한 버튼을 통해 현재 위치로 돌아갈 수 있습니다.<br/><br/>
 - 화면에 보이는 녹색 원은 출근을 인증할 수 있는 범위를 나타냅니다.<br/><br/>
