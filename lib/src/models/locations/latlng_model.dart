@@ -1,6 +1,6 @@
 import 'package:chool_check/src/utils/index.dart';
 
-// LocationModel 생성
+// LatlngModel 생성
 class LatLngModel extends LatLng {
   final double latitude;
   final double longitude;
