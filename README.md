@@ -56,7 +56,7 @@
 
 <img width = "30%" src="https://user-images.githubusercontent.com/95288868/230885769-ce05b5fd-8eec-4380-b018-49209db900d8.png" alt="Screenshot_1681053426" align= "left"/>
 
-'마이페이지' 화면입니다. 사용자는 여기서 자신이 근무하는 회사와 닉네임을 볼 수 있습니다.
+'마이페이지' 화면입니다. 사용자는 여기서 자신이 근무하는 회사와 닉네임을 볼 수 있습니다.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 <br/><br/><br/>
 
