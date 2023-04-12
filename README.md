@@ -84,8 +84,8 @@ Provider.of<exampleProvider>(context, listen: false).exampleFunction();
 <summary>🕵 비동기 처리를 사용하는 함수 내에서 context를 사용할 때 발생하는 오류</summary>
 <div markdown="1">       
 <br/>
-<img width = "50%" src="https://user-images.githubusercontent.com/95288868/231440198-eb36cb5d-298d-42bf-b9c3-8d650e2209fe.png" alt="비동기 에러 발생"/><br/>
-발생한 오류를 해결하기 위해 Flutter 공식문서에 언급된 대로 context가 비동기 처리 중 사라져서 프로그램 오류가 생기는 것을 방지하기 위해 아래의 코드를 사용했습니다.<br/>
+<img width = "50%" src="https://user-images.githubusercontent.com/95288868/231440198-eb36cb5d-298d-42bf-b9c3-8d650e2209fe.png" alt="비동기 에러 발생"/><br/><br/>
+발생한 오류를 해결하기 위해 Flutter 공식문서에 언급된 대로 context가 비동기 처리 중 사라져서 프로그램 오류가 생기는 것을 방지하기 위해 아래의 코드를 사용했습니다.<br/><br/>
  
 ```dart
 if (!context.mounted) return; 
