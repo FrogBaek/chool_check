@@ -85,11 +85,12 @@ Provider.of<exampleProvider>(context, listen: false).exampleFunction();
 <div markdown="1">       
 <br/>
 <img width = "50%" src="https://user-images.githubusercontent.com/95288868/231440198-eb36cb5d-298d-42bf-b9c3-8d650e2209fe.png" alt="비동기 에러 발생"/><br/>
-발생한 오류를 해결하기 위해 Flutter 공식문서에 언급된 대로 context가 비동기 처리 중 사라져서 프로그램 오류가 생기는 것을 방지하기 위해 아래의 코드를 사용했습니다.
-<br/>
+발생한 오류를 해결하기 위해 Flutter 공식문서에 언급된 대로 context가 비동기 처리 중 사라져서 프로그램 오류가 생기는 것을 방지하기 위해 아래의 코드를 사용했습니다.<br/>
+ 
 ```dart
 if (!context.mounted) return; 
 ```
+ 
 <br/>
 하지만 위 그림과 같이 오류는 여전히 발생했습니다. 이를 해결할 방법으로 Future의 작업이 완료되면 특정 작업을 수행할 수 있게 해주는 then() 콜백 함수를 채택했습니다.<br/><br/>
 
