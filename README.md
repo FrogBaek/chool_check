@@ -99,7 +99,9 @@ if (!context.mounted) return;
 
 <img width = "70%" src="https://user-images.githubusercontent.com/95288868/231442614-06486d13-34de-47fc-b847-74857ead21f5.PNG" alt="에러 해결"/><br/>
 
-이제 더 이상 context가 비동기 처리 과정에서 사라질 걱정을 하지 않아도 됩니다!
+이제 더 이상 context가 비동기 처리 과정에서 사라질 걱정을 하지 않아도 됩니다!<br/><br/>
+
+[해당 파일 전체 소스코드](https://github.com/FrogBaek/chool_check/blob/master/lib/src/views/pages/home_page.dart)
 
 
 
