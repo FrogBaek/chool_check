@@ -17,15 +17,12 @@ class _HomePageState extends State<HomePage> {
   /*로직*/
 
   // 출석체크 로직
-  void _choolCheck(BuildContext context) async {
+  Future<bool> _choolCheck() async {
     final distance = await widget.mapProvider.getDistance();
 
     bool canCheck = distance < 100 && widget.userProvider.found;
 
-    // 비동기 과정에서 context가 사라지는 현상을 대비하는 기능 추가
-    if (!context.mounted) return;
-
-    _canCheckDialog(context, canCheck);
+    return canCheck;
   }
 
   // 현위치 로직
@@ -127,7 +124,7 @@ class _HomePageState extends State<HomePage> {
         ElevatedButton(
           onPressed: () async {
             await widget.mapProvider.checkLocationPermission()
-                ? _choolCheck(context)
+                ? _choolCheck().then((canCheck) => _canCheckDialog(context, canCheck))
                 : _showPermissonDialog(context,
                     '현재 내 위치와 가까운 회사를 찾기 위해 위치 권한이 필요합니다. 설정에서 해당 권한을 허용해주세요!');
           },
